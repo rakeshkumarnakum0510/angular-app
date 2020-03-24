@@ -1,0 +1,13 @@
+<p>add-case works!</p>
+
+
+<h2>My Cases</h2>
+<ul class="cases">
+  <li *ngFor="let case of cases"
+    [class.selected]="case === selectedCase"
+    (click)="onSelect(case)">
+    <span class="badge">{{case.id}}</span> {{case.name}}
+  </li>
+</ul>
+
+<app-case-detail [case]="selectedCase"> </app-case-detail>  

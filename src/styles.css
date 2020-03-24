@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+
+nav.navbar.navbar-expand.nb {
+    justify-content: space-between;
+}
+
+.logo-name {
+    color: aliceblue;
+    font-family:sans-serif;
+}

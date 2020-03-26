@@ -16,4 +16,11 @@ export class CaseService {
     this.messageService.add('CaseService: fetched cases');
     return of(CASES);
   }
+  getCase(id: number): Observable<Case> {
+    // TODO: send the message _after_ fetching the hero
+    this.messageService.add(`CaseService: fetched case id=${id}`);
+    return of(CASES.find(function(item){
+      return item.id === id;
+    }));
+   }
 }

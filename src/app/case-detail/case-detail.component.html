@@ -1,12 +1,17 @@
-<p>case-detail works!</p>
-<div *ngIf="case">
 
+  <div *ngIf="case">
     <h2>{{case.name | uppercase}} Details</h2>
     <div><span>id: </span>{{case.id}}</div>
     <div>
       <label>name:
         <input [(ngModel)]="case.name" placeholder="name"/>
       </label>
+      <label>NewCase:
+        <input [(ngModel)]="case.newcase" placeholder="newcase"/>
+      </label>
+      <label>NewDeath:
+        <input [(ngModel)]="case.newdeath" placeholder="newdeath"/>
+      </label>
     </div>
-    <p>case-detail works!</p>
+    <button (click)="goBack()">go back</button>
   </div>

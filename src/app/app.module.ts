@@ -9,6 +9,7 @@ import { ViewCaseComponent } from './view-case/view-case.component';
 import { FormsModule } from '@angular/forms';
 import { CaseDetailComponent } from './case-detail/case-detail.component';
 import { MessagesComponent } from './messages/messages.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -18,12 +19,13 @@ import { MessagesComponent } from './messages/messages.component';
     ReportsComponent,
     ViewCaseComponent,
     CaseDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

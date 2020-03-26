@@ -1,1 +1,29 @@
-<p>home works!</p>
+<!--<p>home works!</p>
+
+
+<h2>Covid19 Cases</h2>
+ <ul class="cases">
+  <li *ngFor="let case of cases"
+    [class.selected]="case === selectedCase"
+    (click)="onSelect(case)">
+    <span class="badge">{{case.id}}</span> {{case.name}}
+  </li>
+</ul>
+ -->
+ <!-- <app-case-detail [case]="selectedCase"> </app-case-detail>  -->
+ <br><br>
+ <table>
+   <tr>
+     <th>Country Code</th>
+     <th>Country Name</th>
+     <th>New Cases</th>
+     <th>New Deaths</th>
+    </tr>
+    <tr *ngFor="let case of cases">
+      <td>{{case.id}}</td>
+      <td>{{case.name}}</td>
+      <td>{{case.newcase}}</td>
+      <td>{{case.newdeath}}</td>
+    </tr>
+
+ </table>

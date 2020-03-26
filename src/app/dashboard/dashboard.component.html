@@ -1,0 +1,12 @@
+
+<h3 class="htxt">Top most-affected countries</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let case of cases" class="col-1-4"
+  routerLink="/detail/{{case.id}}">
+    <div class="module case">
+      <h4>{{case.name}}</h4>
+      <h4>{{case.newcase}}</h4>
+    </div>
+  </a>
+</div>
+  

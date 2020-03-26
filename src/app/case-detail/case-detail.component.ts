@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Location } from '@angular/common';
+import { CaseService } from '../case.service';
+import { ActivatedRoute } from '@angular/router';
 import { Case } from '../case';
 
 @Component({
@@ -8,10 +11,25 @@ import { Case } from '../case';
 })
 export class CaseDetailComponent implements OnInit {
   
-  @Input() case:Case;
-  constructor() { }
+ case:Case;
+  constructor(
+    private route: ActivatedRoute,
+    private caseService: CaseService,
+    private location: Location
+  ) { }
 
   ngOnInit(): void {
+    this.getCase();
+  }
+
+  getCase(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.caseService.getCase(id)
+      .subscribe(cas => this.case = cas);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }

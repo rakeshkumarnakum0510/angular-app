@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Case } from '../case';
+import { CaseService } from '../case.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  selectedCase: Case;
+  cases: Case [];
 
-  ngOnInit(): void {
+  constructor(private caseService: CaseService, private messageService: MessageService) { }
+
+  ngOnInit() {
+    this.getCases();
+  }
+
+  onSelect(cas: Case): void {
+    this.selectedCase = cas;
+    this.messageService.add(`CaseService: Selected cas id=${cas.id}`);
+  }
+
+  getCases(): void {
+    this.caseService.getCases()
+        .subscribe(cases => this.cases = cases);
   }
 
 }

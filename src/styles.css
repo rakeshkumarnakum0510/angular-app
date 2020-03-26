@@ -6,5 +6,8 @@ nav.navbar.navbar-expand.nb {
 
 .logo-name {
     color: aliceblue;
-    font-family:sans-serif;
+    font-family:serif;
+    font-size: 32px!important;
+    font-weight: 900;
+    text-transform: uppercase;
 }

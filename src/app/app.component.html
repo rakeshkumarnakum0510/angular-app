@@ -3,10 +3,13 @@
     <a class="navbar-brand" href="#">
       <img src="/assets/COVID19-FB-horizontal-427x224.png" alt="">
     </a>
-    <h1 class="logo-name">Covid19 India</h1>
+    <h1 class="logo-name">India COVID-19 Tracker</h1>
     <ul class="navbar-nav">
       <li class="nav-item ">
-        <a routerLink="/home" class="nav-link" class="btn btn-primary " role="button">Home</a>
+        <a routerLink="home" class="nav-link" class="btn btn-primary " role="button">Home</a>
+      </li>&nbsp;
+      <li class="nav-item ">
+        <a routerLink="dashboard" class="nav-link" class="btn btn-primary " role="button">Dashboard</a>
       </li>&nbsp;
       <li class="nav-item ">
         <a routerLink="reports" class="nav-link" class="btn btn-primary " role="button">Reports</a>
@@ -24,6 +27,9 @@
  -->
   <router-outlet></router-outlet>
 </div>
-<h1>{{title}}</h1>
- <app-add-case></app-add-case>
- <app-messages></app-messages>
+<!-- <h1>{{title}}</h1>
+  <app-add-case></app-add-case>
+  <app-messages></app-messages>  
+
+  <h1>{{title}}</h1>
+<app-messages></app-messages>-->

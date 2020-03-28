@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CaseService } from '../case.service';
 import { MessageService } from '../message.service';
-import { Case } from '../case';
+import { NgForm } from '@angular/forms';
+import { Case } from '../Case';
 
 
 
@@ -11,23 +12,32 @@ import { Case } from '../case';
   styleUrls: ['./add-case.component.css']
 })
 export class AddCaseComponent implements OnInit {
-  
-  selectedCase: Case;
-    cases: Case [];
 
-  constructor(private caseService: CaseService, private messageService: MessageService) { }
+  countries = [];
+  constructor(private caseService: CaseService){
 
+  }
   ngOnInit() {
-    this.getCases();
+    this.getCountries();
   }
 
-  onSelect(cas: Case): void {
-    this.selectedCase = cas;
-    this.messageService.add(`CaseService: Selected cas id=${cas.id}`);
+   model =new Case( 0,"this.countries[50] ",0,0);
+
+  submitted = false;
+  onSubmit() { this.submitted = true; }
+
+  addCase(){
+    console.log(this.model);
+  } 
+
+  getCountries():void{
+    this.countries = this.caseService.getCountries();
   }
 
-  getCases(): void {
-    this.caseService.getCases()
-        .subscribe(cases => this.cases = cases);
-  }
+/* 
+  onSubmit(caseForm: NgForm) {
+    console.log(caseForm.value);  
+    console.log(caseForm.valid); 
+  } */
+
 }

@@ -1,6 +1,11 @@
-export interface Case{
-    id:number;
-    name:string;
-    newcase:number;
-    newdeath:number;
-}
+export class Case {
+
+    constructor(
+      public id: number,
+      public name: string,
+      public newCase: number,
+      public newDeath: number
+    ) {  }
+  
+  }
+  

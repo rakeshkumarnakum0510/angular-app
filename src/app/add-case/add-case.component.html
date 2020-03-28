@@ -9,24 +9,43 @@
     <span class="badge">{{case.id}}</span> {{case.name}}
   </li>
 </ul>
-
-<app-case-detail [case]="selectedCase"> </app-case-detail>   -->
-<div>
-  <form>
-    <label>SELECT COUNTRY </label>
-    <select>
-      <option>CHINA</option>
-      <option>ITALY</option>
-      <option>USA</option>
-      <option>SPAIN</option>
-      <option>GERMANY</option>
-      <option>IRAN</option>
-      <option>FRANCE</option>
-      <option>SWITZERLAND</option>
-      <option>UK</option>
-      <option>S.KOREA</option>
+--------------
+ <div class="form-group">
+      <label> Country Code</label>
+      <select class="form-control" required  [(ngModel)]="model.id" name="id" #id="ngModel">
+        <option>11</option>
+        <option>12</option>
+        <option>13</option>
+        <option>14</option>
+        <option>15</option>
+        
+         <option *ngFor="let case of cases">{{case.id}}</option> 
     </select>
-    <label>NEW CASES</label>
-    <input type="number" title="Enter"
+  </div>
+=====================
+<app-case-detail [case]="selectedCase"> </app-case-detail>   -->
+<div class="container form-align">
+  <h1>Add New Cases</h1>
+  <form #caseForm="ngForm" (ngSubmit)="addCase()">
+    <div class="form-group">
+      <label for="country">Country Name</label>
+      <select class="form-control" id="country"
+      [(ngModel)]="model.name" name="name"
+      #name="ngModel">
+       <option> Select </option>
+      <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>New Cases</label>
+      <input type="number" class="form-control"  required  [(ngModel)]="model.newCase" name="newcase" #newcase="ngModel">
+    </div>
+    <div class="form-group">
+      <label for="name">New Deaths</label>
+      <input type="number" class="form-control" required  [(ngModel)]="model.newDeath" name="newdeath" #newdeath="ngModel">
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+
   </form>
 </div>

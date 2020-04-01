@@ -6,10 +6,14 @@ import { AddCaseComponent } from './add-case/add-case.component';
 import { HomeComponent } from './home/home.component';
 import { ReportsComponent } from './reports/reports.component';
 import { ViewCaseComponent } from './view-case/view-case.component';
-import { FormsModule } from '@angular/forms';
 import { CaseDetailComponent } from './case-detail/case-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CaseData } from './mock-cases';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +24,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ViewCaseComponent,
     CaseDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+     InMemoryWebApiModule.forRoot(CaseData), HttpClientModule, FormsModule, ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

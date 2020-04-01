@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CaseService } from '../case.service';
 import { MessageService } from '../message.service';
-import { NgForm } from '@angular/forms';
 import { Case } from '../Case';
+import { FormGroup, FormControl } from '@angular/forms';
+import { CaseData } from '../mock-cases';
+import { Router } from '@angular/router'
+
 
 
 
@@ -13,27 +16,42 @@ import { Case } from '../Case';
 })
 export class AddCaseComponent implements OnInit {
 
+  caseFormGroup: FormGroup;
+  cases:CaseData[];
   countries = [];
-  constructor(private caseService: CaseService){
 
-  }
+  constructor(private caseService: CaseService,private router: Router,){}
+
   ngOnInit() {
+
+    this.caseFormGroup = new FormGroup(
+      {
+        name : new FormControl(''),
+        newCase : new FormControl(''),
+        newDeath : new FormControl('')
+      },
+    );
     this.getCountries();
   }
 
-   model =new Case( 0,"this.countries[50] ",0,0);
+   /* model =new Case(0," ",0,0);
 
   submitted = false;
-  onSubmit() { this.submitted = true; }
+  onSubmit() { this.submitted = true; } */
 
-  addCase(){
-    console.log(this.model);
-  } 
+ 
 
   getCountries():void{
     this.countries = this.caseService.getCountries();
   }
+  addCase() {
+    this.caseService.addCase(this.caseFormGroup.value).subscribe(data => {
+      //this.cases = data;
+      console.log(this.cases);
+      this.router.navigate(['/home']);
+    });
 
+  } 
 /* 
   onSubmit(caseForm: NgForm) {
     console.log(caseForm.value);  

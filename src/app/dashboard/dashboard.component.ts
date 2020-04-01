@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CaseService } from '../case.service';
 import { Case } from '../case';
+import { CaseData } from '../mock-cases';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +9,7 @@ import { Case } from '../case';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  cases: Case[];
+  cases: CaseData[];
 
   constructor(private caseService: CaseService) { }
 

@@ -24,26 +24,26 @@
   </div>
 =====================
 <app-case-detail [case]="selectedCase"> </app-case-detail>   -->
+
+
 <div class="container form-align">
   <h1>Add New Cases</h1>
-  <form #caseForm="ngForm" (ngSubmit)="addCase()">
+  <form [formGroup]='caseFormGroup' (ngSubmit)="addCase()">
     <div class="form-group">
       <label for="country">Country Name</label>
-      <select class="form-control" id="country"
-      [(ngModel)]="model.name" name="name"
-      #name="ngModel">
-       <option> Select </option>
-      <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+      <select class="form-control" formControlName='name'
+      name="name">
+      <option *ngFor="let c of countries" [ngValue]="c">{{c}}</option>
       </select>
     </div>
 
     <div class="form-group">
       <label>New Cases</label>
-      <input type="number" class="form-control"  required  [(ngModel)]="model.newCase" name="newcase" #newcase="ngModel">
+      <input type="number" class="form-control"  required  formControlName='newCase'>
     </div>
     <div class="form-group">
       <label for="name">New Deaths</label>
-      <input type="number" class="form-control" required  [(ngModel)]="model.newDeath" name="newdeath" #newdeath="ngModel">
+      <input type="number" class="form-control" required formControlName='newDeath'>
     </div>
     <button type="submit" class="btn btn-success">Submit</button>
 

@@ -4,10 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddCaseComponent } from './add-case/add-case.component';
 import { HomeComponent } from './home/home.component';
-import { ReportsComponent } from './reports/reports.component';
-import { ViewCaseComponent } from './view-case/view-case.component';
 import { CaseDetailComponent } from './case-detail/case-detail.component';
-import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClientModule } from '@angular/common/http';
@@ -20,10 +17,7 @@ import { EditComponent } from './edit/edit.component';
     AppComponent,
     AddCaseComponent,
     HomeComponent,
-    ReportsComponent,
-    ViewCaseComponent,
     CaseDetailComponent,
-    MessagesComponent,
     DashboardComponent,
     EditComponent
   ],
@@ -31,7 +25,7 @@ import { EditComponent } from './edit/edit.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-     InMemoryWebApiModule.forRoot(CaseData), HttpClientModule, FormsModule, ReactiveFormsModule
+    InMemoryWebApiModule.forRoot(CaseData), HttpClientModule, FormsModule, ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

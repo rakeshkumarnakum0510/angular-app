@@ -10,8 +10,8 @@ import { Case } from '../case';
   styleUrls: ['./case-detail.component.css']
 })
 export class CaseDetailComponent implements OnInit {
-  
- case:Case;
+
+  case: Case;
   constructor(
     private route: ActivatedRoute,
     private caseService: CaseService,
@@ -19,14 +19,14 @@ export class CaseDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getCase(); 
+    this.getCase();
   }
 
-   getCase(): void {
+  getCase(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.caseService.getCase(id)
       .subscribe(cas => this.case = cas);
-  } 
+  }
 
   goBack(): void {
     this.location.back();

@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { MessageService } from './message.service';
 import { Observable, of, throwError } from 'rxjs';
 import { Case } from './case';
 import { CaseData } from './mock-cases';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { tap, catchError, map} from 'rxjs/operators';
+import { tap, catchError, map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -211,6 +210,7 @@ export class CaseService {
     "Ukraine",
     "United Arab Emirates",
     "United Kingdom",
+    "United States",
     "Uruguay",
     "Uzbekistan",
     "Venezuela",
@@ -228,9 +228,7 @@ export class CaseService {
     headers: this.headers
   };
   constructor(
-    private http: HttpClient,
-    private messageService: MessageService
-  ) {}
+    private http: HttpClient) { }
   private handleError(error: any) {
     console.log(error);
     return throwError(error);
@@ -238,10 +236,7 @@ export class CaseService {
   getCountries() {
     return this.countries;
   }
-  /* getCases(): Observable< Case[] > {
-    this.messageService.add('CaseService: fetched cases');
-    return of(CASES); 
-  }*/
+
   getCases(): Observable<CaseData[]> {
     return this.http.get<CaseData[]>(this.apiurl).pipe(
       tap(data => console.log(data)),
@@ -253,22 +248,27 @@ export class CaseService {
     const url = `${this.apiurl}/${id}`;
     return this.http.get<Case>(url).pipe(catchError(this.handleError));
   }
-  addCase (cas: Case): Observable<Case> { 
-    cas.id=null;
+  addCase(cas: Case): Observable<Case> {
+    cas.id = null;
     return this.http.post<Case>(this.apiurl, cas, this.httpOptions).pipe(
-    tap(data => console.log(data)),
-    catchError(this.handleError)
-  );
-}
+      tap(data => console.log(data)),
+      catchError(this.handleError)
+    );
+  }
 
-  /*
- .pipe(map(this.extractData),catchError(this.handleErrorObservable));
- 
- getCase(id: number): Observable<Case> {
-    // TODO: send the message _after_ fetching the hero
-    this.messageService.add(`CaseService: fetched case id=${id}`);
-    return of(CASES.find(function(item){
-      return item.id === id;
-    }));
-   }  */
+  editCase(cas: Case): Observable<Case> {
+    const url = `${this.apiurl}/${cas.id}`;
+    return this.http.put<Case>(this.apiurl, cas, this.httpOptions).pipe(
+      map(() => cas),
+      catchError(this.handleError)
+    );
+  }
+
+  deleteCase(id: number): Observable<Case> {
+    const url = `${this.apiurl}/${id}`;
+    return this.http.delete<Case>(url, this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
 }

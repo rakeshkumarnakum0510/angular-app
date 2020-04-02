@@ -1,45 +1,16 @@
-<!--<p>add-case works!</p>
-
-
- <h2>My Cases</h2>
-<ul class="cases">
-  <li *ngFor="let case of cases"
-    [class.selected]="case === selectedCase"
-    (click)="onSelect(case)">
-    <span class="badge">{{case.id}}</span> {{case.name}}
-  </li>
-</ul>
---------------
- <div class="form-group">
-      <label> Country Code</label>
-      <select class="form-control" required  [(ngModel)]="model.id" name="id" #id="ngModel">
-        <option>11</option>
-        <option>12</option>
-        <option>13</option>
-        <option>14</option>
-        <option>15</option>
-        
-         <option *ngFor="let case of cases">{{case.id}}</option> 
-    </select>
-  </div>
-=====================
-<app-case-detail [case]="selectedCase"> </app-case-detail>   -->
-
-
 <div class="container form-align">
   <h1>Add New Cases</h1>
   <form [formGroup]='caseFormGroup' (ngSubmit)="addCase()">
     <div class="form-group">
       <label for="country">Country Name</label>
-      <select class="form-control" formControlName='name'
-      name="name">
-      <option *ngFor="let c of countries" [ngValue]="c">{{c}}</option>
+      <select class="form-control" formControlName='name' name="name">
+        <option *ngFor="let c of countries" [ngValue]="c">{{c}}</option>
       </select>
     </div>
 
     <div class="form-group">
       <label>New Cases</label>
-      <input type="number" class="form-control"  required  formControlName='newCase'>
+      <input type="number" class="form-control" required formControlName='newCase'>
     </div>
     <div class="form-group">
       <label for="name">New Deaths</label>

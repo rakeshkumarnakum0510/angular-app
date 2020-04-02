@@ -1,17 +1,20 @@
+<div *ngIf="case">
+  <h2>{{case.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{case.id}}</div>
+  <div>
+    <label>{{case.id}}</label><br><br>
+    <label>{{case.name}}</label><br><br>
+    <label>{{case.newCase}}</label><br><br>
+    <label>{{case.newDeath}}</label>
 
-  <div *ngIf="case">
-    <h2>{{case.name | uppercase}} Details</h2>
-    <div><span>id: </span>{{case.id}}</div>
-    <div>
-      <label>name:
-        <input [(ngModel)]="case.name" placeholder="name"/>
-      </label>
-      <label>NewCase:
-        <input [(ngModel)]="case.newCase" placeholder="newcase"/>
-      </label>
-      <label>NewDeath:
-        <input [(ngModel)]="case.newDeath" placeholder="newdeath"/>
-      </label>
-    </div>
+    <label>name:
+      <input [(ngModel)]="case.name" placeholder="name" />
+    </label>
+    <label>NewCase:
+      <input [(ngModel)]="case.newCase" placeholder="newcase" />
+    </label>
+    <label>NewDeath:
+      <input [(ngModel)]="case.newDeath" placeholder="newdeath" />
+    </label>
     <button (click)="goBack()">go back</button>
   </div>

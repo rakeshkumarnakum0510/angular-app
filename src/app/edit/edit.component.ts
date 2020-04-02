@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { CaseService } from '../case.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Case } from '../case';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-edit',
@@ -6,10 +10,48 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
+  caseFormGroup: FormGroup;
+  countries = [];
+  case: Case;
+  constructor(
+    private route: ActivatedRoute,
+    private caseService: CaseService,
+    private router: Router,
+  ) { }
 
-  constructor() { }
+  ngOnInit() {
 
-  ngOnInit(): void {
+    this.caseFormGroup = new FormGroup(
+      {
+        name: new FormControl(''),
+        newCase: new FormControl(''),
+        newDeath: new FormControl('')
+      },
+    );
+
+    this.getCountries();
+    this.getCase();
+  }
+  getCase(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.caseService.getCase(id)
+      .subscribe(cas => {
+        this.case = cas;
+        this.caseFormGroup.patchValue(this.case);
+      });
   }
 
+
+  editCase() {
+    this.case.name = this.caseFormGroup.value.name;
+    this.case.newCase = this.caseFormGroup.value.newCase;
+    this.case.newDeath = this.caseFormGroup.value.newDeath;
+    this.caseService.editCase(this.case).subscribe(data => {
+      this.router.navigate(['/home']);
+    });
+  }
+
+  getCountries(): void {
+    this.countries = this.caseService.getCountries();
+  }
 }

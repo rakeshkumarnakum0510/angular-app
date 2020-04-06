@@ -11,6 +11,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CaseData } from './mock-cases';
 import { EditComponent } from './edit/edit.component';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { ChartComponent } from './chart/chart.component';
+
 
 @NgModule({
   declarations: [
@@ -19,13 +22,18 @@ import { EditComponent } from './edit/edit.component';
     HomeComponent,
     CaseDetailComponent,
     DashboardComponent,
-    EditComponent
+    EditComponent, 
+    ChartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    InMemoryWebApiModule.forRoot(CaseData), HttpClientModule, FormsModule, ReactiveFormsModule
+    InMemoryWebApiModule.forRoot(CaseData),
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HighchartsChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

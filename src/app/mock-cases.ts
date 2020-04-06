@@ -5,16 +5,25 @@ export class CaseData implements InMemoryDbService {
   createDb() {
 
     const cases: Case[] = [
-      { id: 11, name: 'United States', newCase: 203452, newDeath: 5002 },
-      { id: 12, name: 'Italy', newCase: 115234, newDeath: 15009 },
-      { id: 13, name: 'China', newCase: 80256, newDeath: 2456 },
-      { id: 14, name: 'Spain', newCase: 90675, newDeath: 4567 },
-      { id: 15, name: 'Germany', newCase: 70856, newDeath: 3452 },
-      { id: 16, name: 'Iran', newCase: 60875, newDeath: 3421 },
-      { id: 17, name: 'France', newCase: 50921, newDeath: 2467 },
-      { id: 18, name: 'Switzerland', newCase: 30321, newDeath: 1976 },
-      { id: 19, name: 'United Kingdom', newCase: 20904, newDeath: 1690 },
-      { id: 20, name: 'South Korea', newCase: 1503, newDeath: 222 }
+      { id: 11, name: 'United States', date:'04-04-2020', newCase: 50, newDeath: 5 },
+      { id: 12, name: 'United States', date:'05-04-2020', newCase: 40, newDeath: 10 },
+      { id: 13, name: 'United States', date:'06-04-2020', newCase: 110, newDeath: 15 },
+
+      { id: 14, name: 'Italy', date:'04-04-2020', newCase: 20, newDeath: 5 },
+      { id: 15, name: 'Italy', date:'05-04-2020', newCase: 40, newDeath: 20 },
+      { id: 16, name: 'Italy', date:'06-04-2020', newCase: 60, newDeath: 30 },
+
+      { id: 17, name: 'China', date:'04-04-2020', newCase: 20, newDeath: 5 },
+      { id: 18, name: 'China', date:'05-04-2020', newCase: 30, newDeath: 10 },
+      { id: 19, name: 'China', date:'06-04-2020', newCase: 70, newDeath: 15 },
+
+      { id: 20, name: 'India', date:'04-04-2020', newCase: 10, newDeath: 5  },
+      { id: 21, name: 'India', date:'05-04-2020', newCase: 50, newDeath: 10  },
+      { id: 22, name: 'India', date:'06-04-2020', newCase: 90, newDeath: 15  },
+
+      { id: 23, name: 'Spain', date:'04-04-2020', newCase: 20, newDeath: 5 },
+      { id: 24, name: 'Spain', date:'05-04-2020', newCase: 40, newDeath: 20 },
+      { id: 25, name: 'Spain', date:'06-04-2020', newCase: 60, newDeath: 30 },
     ];
     return { cases };
   }

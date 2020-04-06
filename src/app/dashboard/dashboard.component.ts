@@ -9,7 +9,7 @@ import { CaseData } from '../mock-cases';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  cases: CaseData[];
+  cases: Case[];
 
   constructor(private caseService: CaseService) { }
 

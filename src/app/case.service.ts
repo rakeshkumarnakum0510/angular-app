@@ -237,8 +237,8 @@ export class CaseService {
     return this.countries;
   }
 
-  getCases(): Observable<CaseData[]> {
-    return this.http.get<CaseData[]>(this.apiurl).pipe(
+  getCases(): Observable<Case[]> {
+    return this.http.get<Case[]>(this.apiurl).pipe(
       tap(data => console.log(data)),
       catchError(this.handleError)
     );

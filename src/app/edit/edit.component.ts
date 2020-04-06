@@ -24,8 +24,10 @@ export class EditComponent implements OnInit {
     this.caseFormGroup = new FormGroup(
       {
         name: new FormControl(''),
+        date: new FormControl(''),
         newCase: new FormControl(''),
         newDeath: new FormControl('')
+       
       },
     );
 
@@ -44,6 +46,7 @@ export class EditComponent implements OnInit {
 
   editCase() {
     this.case.name = this.caseFormGroup.value.name;
+    this.case.date = this.caseFormGroup.value.date;
     this.case.newCase = this.caseFormGroup.value.newCase;
     this.case.newDeath = this.caseFormGroup.value.newDeath;
     this.caseService.editCase(this.case).subscribe(data => {

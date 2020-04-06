@@ -19,6 +19,7 @@ export class AddCaseComponent implements OnInit {
   ngOnInit() {
     this.caseFormGroup = new FormGroup({
       name: new FormControl(""),
+      date: new FormControl(""),
       newCase: new FormControl(""),
       newDeath: new FormControl("")
     });

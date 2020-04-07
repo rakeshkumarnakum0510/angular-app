@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CaseService } from '../case.service';
 import { Case } from '../case';
-import { CaseData } from '../mock-cases';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,6 +17,6 @@ export class DashboardComponent implements OnInit {
   }
   getCases(): void {
     this.caseService.getCases()
-      .subscribe(cases => this.cases = cases.slice(0, 4));
+      .subscribe(cases => this.cases = cases.filter(c => c.newCase >60).slice(0,4));
   }
 }

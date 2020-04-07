@@ -5,25 +5,21 @@ export class CaseData implements InMemoryDbService {
   createDb() {
 
     const cases: Case[] = [
-      { id: 11, name: 'United States', date:'04-04-2020', newCase: 50, newDeath: 5 },
-      { id: 12, name: 'United States', date:'05-04-2020', newCase: 40, newDeath: 10 },
-      { id: 13, name: 'United States', date:'06-04-2020', newCase: 110, newDeath: 15 },
-
-      { id: 14, name: 'Italy', date:'04-04-2020', newCase: 20, newDeath: 5 },
-      { id: 15, name: 'Italy', date:'05-04-2020', newCase: 40, newDeath: 20 },
-      { id: 16, name: 'Italy', date:'06-04-2020', newCase: 60, newDeath: 30 },
-
-      { id: 17, name: 'China', date:'04-04-2020', newCase: 20, newDeath: 5 },
-      { id: 18, name: 'China', date:'05-04-2020', newCase: 30, newDeath: 10 },
-      { id: 19, name: 'China', date:'06-04-2020', newCase: 70, newDeath: 15 },
-
-      { id: 20, name: 'India', date:'04-04-2020', newCase: 10, newDeath: 5  },
-      { id: 21, name: 'India', date:'05-04-2020', newCase: 50, newDeath: 10  },
-      { id: 22, name: 'India', date:'06-04-2020', newCase: 90, newDeath: 15  },
-
-      { id: 23, name: 'Spain', date:'04-04-2020', newCase: 20, newDeath: 5 },
-      { id: 24, name: 'Spain', date:'05-04-2020', newCase: 40, newDeath: 20 },
-      { id: 25, name: 'Spain', date:'06-04-2020', newCase: 60, newDeath: 30 },
+      new Case (11, 'United States','04-04-2020', 10, 5 ),
+      new Case (12, 'United States','05-04-2020', 50, 25 ),
+      new Case (13, 'United States','06-04-2020', 110, 35 ),
+      new Case (14, 'Italy','04-04-2020', 20, 10 ),
+      new Case (15, 'Italy','05-04-2020', 80, 15 ),
+      new Case (16, 'Italy','06-04-2020', 100, 45 ),
+      new Case (17, 'China','04-04-2020', 20, 5 ),
+      new Case (18, 'China','05-04-2020', 80, 25 ),
+      new Case (19, 'China','06-04-2020', 100, 65 ),
+      new Case (20, 'India','04-04-2020', 30, 10 ),
+      new Case (21, 'India','05-04-2020', 70, 15 ),
+      new Case (22, 'India','06-04-2020', 90, 55 ),
+      new Case (23, 'Spain','04-04-2020', 30, 10 ),
+      new Case (24, 'Spain','05-04-2020', 90, 45 ),
+      new Case (25, 'Spain','06-04-2020', 120, 75 ),
     ];
     return { cases };
   }

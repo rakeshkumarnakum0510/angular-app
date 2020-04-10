@@ -154,9 +154,9 @@ export class ChartComponent implements OnInit {
                y:ccases.reduce((accum,item) => accum + item.newCase, 0)/totalcases*100
             }];
             
-            this.sumOfdeaths = [...this.sumOfcases, {
+            this.sumOfdeaths = [...this.sumOfdeaths, {
                name: el,
-               y:ccases.reduce((accum,item) => accum + item.newDeath, 0)/totaldeaths*100
+               y:(ccases.reduce((accum,item) => accum + item.newDeath, 0)/totaldeaths)*100
             }];
            
 

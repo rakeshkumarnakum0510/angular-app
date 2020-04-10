@@ -39,17 +39,20 @@ export class EditComponent implements OnInit {
     this.caseService.getCase(id)
       .subscribe(cas => {
         this.case = cas;
+        console.log(this.case);
         this.caseFormGroup.patchValue(this.case);
+        
       });
   }
 
 
   editCase() {
+
     this.case.name = this.caseFormGroup.value.name;
     this.case.date = this.caseFormGroup.value.date;
     this.case.newCase = this.caseFormGroup.value.newCase;
     this.case.newDeath = this.caseFormGroup.value.newDeath;
-    this.caseService.editCase(this.case).subscribe(data => {
+    this.caseService.editCase(this.case.id, this.case).subscribe(data => {
       this.router.navigate(['/home']);
     });
   }

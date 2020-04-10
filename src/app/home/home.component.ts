@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   getCases(): void {
     this.caseService.getCases().subscribe(data => { 
       this.cases = data ;
-      this.todayCases=this.cases.filter( a => a.date == "06-04-2020");
+      this.todayCases=this.cases.filter( a => a.date == "10-04-2020");
   
       this.todayCases.forEach((el)=>{
          const ccases = this.cases.filter(c => c.name == el.name);
@@ -30,10 +30,13 @@ export class HomeComponent implements OnInit {
              const sumOfdeaths =ccases.reduce((accum,item) => accum + item.newDeath, 0);
           el.totalCases= sumOfcases;
           el.totalDeaths = sumOfdeaths;
+        
       }); 
     });
     
   }
+
+  
   deleteCase(id) {
     this.caseService.deleteCase(id).subscribe(data => {
       this.getCases();

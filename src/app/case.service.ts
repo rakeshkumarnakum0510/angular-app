@@ -4,11 +4,13 @@ import { Case } from './case';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap, catchError, map } from 'rxjs/operators';
 
+
 @Injectable({
   providedIn: "root"
 })
 export class CaseService {
-  apiurl = "api/cases";
+  
+              apiurl = "http://localhost:8080/api/";
 
   countries = [
     "Afghanistan",
@@ -219,44 +221,64 @@ export class CaseService {
     "Zimbabwe"
   ];
 
-  headers = new HttpHeaders()
+/* 
+ headers = new HttpHeaders()
     .set("Content-Type", "application/json")
     .set("Accept", "application/json");
   httpOptions = {
     headers: this.headers
-  };
-  constructor(
-    private http: HttpClient) { }
+  };  */
+  constructor(private http: HttpClient) { }
+
   private handleError(error: any) {
     console.log(error);
     return throwError(error);
   }
+
   getCountries() {
     return this.countries;
   }
-
+/* 
   getCases(): Observable<Case[]> {
     return this.http.get<Case[]>(this.apiurl).pipe(
       tap(data => console.log(data)),
       catchError(this.handleError)
     );
-  }
+  } */
 
-  getCase(id: number): Observable<Case> {
-    const url = `${this.apiurl}/${id}`;
-    return this.http.get<Case>(url).pipe(catchError(this.handleError));
-  }
-  addCase(cas: Case): Observable<Case> {
-    cas.id = null;
-    return this.http.post<Case>(this.apiurl, cas, this.httpOptions).pipe(
+  getCases(): Observable<any> {
+    return this.http.get(`${this.apiurl}`+'list-case1').pipe(
       tap(data => console.log(data)),
       catchError(this.handleError)
     );
   }
 
+  
+  getCase(id: number): Observable<any> {
+    return this.http.get(`${this.apiurl}/case1/${id}`);
+  }
+
+
+/*
+  getCase(id: number): Observable<Case> {
+    const url = `${this.apiurl}${id}`;
+    return this.http.get<Case>(url).pipe(catchError(this.handleError));
+  }
+   addCase(cas: Case): Observable<Case> {
+    cas.id = null;
+    return this.http.post<Case>(this.apiurl, cas, this.httpOptions).pipe(
+      tap(data => console.log(data)),
+      catchError(this.handleError)
+    );
+  } */
+
+  addCase(case1: object): Observable<object> {
+    return this.http.post(`${this.apiurl}`+'save-case1', case1);
+  } 
+/*
   editCase(cas: Case): Observable<Case> {
     const url = `${this.apiurl}/${cas.id}`;
-    return this.http.put<Case>(this.apiurl, cas, this.httpOptions).pipe(
+    return this.http.put<Case>(this.apiurl, cas).pipe(
       map(() => cas),
       catchError(this.handleError)
     );
@@ -264,9 +286,18 @@ export class CaseService {
 
   deleteCase(id: number): Observable<Case> {
     const url = `${this.apiurl}/${id}`;
-    return this.http.delete<Case>(url, this.httpOptions).pipe(
+    return this.http.delete<Case>(url).pipe(
       catchError(this.handleError)
     );
+  }
+*/
+
+  editCase(id: number, value: any): Observable<Object> {
+    return this.http.post(`${this.apiurl}/update-case1/${id}`, value);
+  } 
+
+  deleteCase(id: number): Observable<any> {
+    return this.http.delete(`${this.apiurl}/delete-case1/${id}`, { responseType: 'text' });
   }
 
 }

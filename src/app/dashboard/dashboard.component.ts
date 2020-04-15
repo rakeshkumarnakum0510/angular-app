@@ -17,6 +17,6 @@ export class DashboardComponent implements OnInit {
   }
   getCases(): void {
     this.caseService.getCases()
-      .subscribe(cases => this.cases = cases.filter(c => c.newCase >60).slice(0,4));
+      .subscribe(cases => this.cases = cases.filter(c => c.newCase >300).slice(0,4));
   }
 }

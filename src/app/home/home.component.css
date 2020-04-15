@@ -43,7 +43,6 @@
     border-radius: 4px 0 0 4px;
   }
   table {
-    margin-left: 200px;
     border-collapse: collapse;
    
   }
@@ -60,3 +59,10 @@
     background-color: #607D8B;
     color: white;
   }
+.heading-tb {
+  margin-left: 200px;
+  margin-bottom: 10px;
+}
+.track-tb {
+     margin-left: 760px;
+}

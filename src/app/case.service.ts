@@ -9,8 +9,8 @@ import { tap, catchError, map } from 'rxjs/operators';
   providedIn: "root"
 })
 export class CaseService {
-  
-              apiurl = "http://localhost:8080/api/";
+
+  apiurl = "http://localhost:8080/api/";
 
   countries = [
     "Afghanistan",
@@ -221,13 +221,13 @@ export class CaseService {
     "Zimbabwe"
   ];
 
-/* 
- headers = new HttpHeaders()
-    .set("Content-Type", "application/json")
-    .set("Accept", "application/json");
-  httpOptions = {
-    headers: this.headers
-  };  */
+  /* 
+   headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Accept", "application/json");
+    httpOptions = {
+      headers: this.headers
+    };  */
   constructor(private http: HttpClient) { }
 
   private handleError(error: any) {
@@ -238,28 +238,37 @@ export class CaseService {
   getCountries() {
     return this.countries;
   }
-/* 
-  getCases(): Observable<Case[]> {
-    return this.http.get<Case[]>(this.apiurl).pipe(
-      tap(data => console.log(data)),
-      catchError(this.handleError)
-    );
-  } */
 
   getCases(): Observable<any> {
-    return this.http.get(`${this.apiurl}`+'list-case1').pipe(
+    return this.http.get(`${this.apiurl}` + 'list-case1').pipe(
       tap(data => console.log(data)),
       catchError(this.handleError)
     );
   }
 
-  
   getCase(id: number): Observable<any> {
     return this.http.get(`${this.apiurl}/case1/${id}`);
   }
 
+  addCase(case1: object): Observable<object> {
+    return this.http.post(`${this.apiurl}` + 'save-case1', case1);
+  }
+
+  editCase(id: number, value: any): Observable<Object> {
+    return this.http.post(`${this.apiurl}/update-case1/${id}`, value);
+  }
+
+  deleteCase(id: number): Observable<any> {
+    return this.http.delete(`${this.apiurl}/delete-case1/${id}`, { responseType: 'text' });
+  }
+
+}
+
+
+
 
 /*
+
   getCase(id: number): Observable<Case> {
     const url = `${this.apiurl}${id}`;
     return this.http.get<Case>(url).pipe(catchError(this.handleError));
@@ -270,12 +279,15 @@ export class CaseService {
       tap(data => console.log(data)),
       catchError(this.handleError)
     );
-  } */
+  }
 
-  addCase(case1: object): Observable<object> {
-    return this.http.post(`${this.apiurl}`+'save-case1', case1);
-  } 
-/*
+  getCases(): Observable<Case[]> {
+    return this.http.get<Case[]>(this.apiurl).pipe(
+      tap(data => console.log(data)),
+      catchError(this.handleError)
+    );
+  }
+
   editCase(cas: Case): Observable<Case> {
     const url = `${this.apiurl}/${cas.id}`;
     return this.http.put<Case>(this.apiurl, cas).pipe(
@@ -292,12 +304,3 @@ export class CaseService {
   }
 */
 
-  editCase(id: number, value: any): Observable<Object> {
-    return this.http.post(`${this.apiurl}/update-case1/${id}`, value);
-  } 
-
-  deleteCase(id: number): Observable<any> {
-    return this.http.delete(`${this.apiurl}/delete-case1/${id}`, { responseType: 'text' });
-  }
-
-}

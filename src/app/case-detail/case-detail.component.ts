@@ -25,8 +25,12 @@ export class CaseDetailComponent implements OnInit {
   getCase(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.caseService.getCase(id)
-      .subscribe(cas => this.case = cas);
+      .subscribe(cas => {
+        this.case = cas  
+       } );
+     
   }
+  
 
   goBack(): void {
     this.location.back();

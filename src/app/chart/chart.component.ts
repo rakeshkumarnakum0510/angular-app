@@ -127,8 +127,9 @@ export class ChartComponent implements OnInit {
    getCases(): void {
       this.caseService.getCases().subscribe(data => {
          this.cases = data;
-         const totalcases = this.cases.reduce((accum,item) => accum + item.newCase, 0)
-         const totaldeaths = this.cases.reduce((accum,item) => accum + item.newDeath, 0)
+         const totalcases = this.cases.reduce((accum,item) => accum + item.newCase, 0);
+         const totaldeaths = this.cases.reduce((accum,item) => accum + item.newDeath, 0);
+         /* const total=this.cases.reduce((p,c) => p+c.newCase,0); */
          console.log(totalcases);
          console.log(totaldeaths);
 
@@ -172,13 +173,13 @@ export class ChartComponent implements OnInit {
          this.chartOptions1.xAxis.categories = this.date;
 
          this.chartOptions2.series =[{
-            name: 'Countries',
+            name: 'Cases',
             colorByPoint: true,
             data:this.sumOfcases
         }]
         
         this.chartOptions3.series =[{
-         name: 'Countries',
+         name: 'Deaths',
          colorByPoint: true,
          data:this.sumOfdeaths
      }]

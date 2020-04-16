@@ -12,6 +12,12 @@ export class CaseService {
 
   apiurl = "http://localhost:8080/api/";
 
+  USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'
+
+  public username: String;
+  public password: String;
+
+
   countries = [
     "Afghanistan",
     "Albania",
@@ -230,6 +236,47 @@ export class CaseService {
     };  */
   constructor(private http: HttpClient) { }
 
+
+
+
+  caseService(username: String, password: String) {
+    return this.http.get(`http://localhost:8080/api/basicauth`,
+      { headers: { authorization: this.createBasicAuthToken(username, password) } }).pipe(map((res) => {
+        this.username = username;
+        this.password = password;
+        this.registerSuccessfulLogin(username, password);
+      }));
+  }
+
+  createBasicAuthToken(username: String, password: String) {
+    return 'Basic ' + window.btoa(username + ":" + password)
+  }
+
+  registerSuccessfulLogin(username, password) {
+    sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username)
+  }
+
+  logout() {
+    sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
+    this.username = null;
+    this.password = null;
+  }
+
+  isUserLoggedIn() {
+    let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME)
+    if (user === null) return false
+    return true
+  }
+
+  getLoggedInUserName() {
+    let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME)
+    if (user === null) return ''
+    return user
+  }
+
+
+
+
   private handleError(error: any) {
     console.log(error);
     return throwError(error);
@@ -247,7 +294,7 @@ export class CaseService {
   }
 
   getCase(id: number): Observable<any> {
-    return this.http.get(`${this.apiurl}/case1/${id}`);
+    return this.http.get(`${this.apiurl}case1/${id}`);
   }
 
   addCase(case1: object): Observable<object> {
@@ -255,11 +302,11 @@ export class CaseService {
   }
 
   editCase(id: number, value: any): Observable<Object> {
-    return this.http.post(`${this.apiurl}/update-case1/${id}`, value);
+    return this.http.post(`${this.apiurl}update-case1/${id}`, value);
   }
 
   deleteCase(id: number): Observable<any> {
-    return this.http.delete(`${this.apiurl}/delete-case1/${id}`, { responseType: 'text' });
+    return this.http.delete(`${this.apiurl}delete-case1/${id}`, { responseType: 'text' });
   }
 
 }

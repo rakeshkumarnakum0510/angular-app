@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { CaseService } from '../case.service';
 import { Case } from '../case';
+import { Router } from '@angular/router';
 @Component({
    selector: 'app-chart',
    templateUrl: './chart.component.html',
@@ -118,7 +119,11 @@ export class ChartComponent implements OnInit {
       series: [ ]
    };
 
-   constructor(private caseService: CaseService) { }
+   constructor(private caseService: CaseService,private router: Router) {
+   /*   if(!this.caseService.isUserLoggedIn()){
+      this.router.navigate(['/login']); 
+     } */
+    }
 
    ngOnInit(): void {
       this.getCases();

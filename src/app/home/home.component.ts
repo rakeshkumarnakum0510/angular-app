@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   getCases(): void {
     this.caseService.getCases().subscribe(data => { 
       this.cases = data ;
-      this.todayCases=this.cases.filter( a => a.date == "14-04-2020");
+      this.todayCases=this.cases.filter( a => a.date == "16-04-2020");
   
       this.todayCases.forEach((el)=>{
          const ccases = this.cases.filter(c => c.name == el.name);

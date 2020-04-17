@@ -13,6 +13,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { ChartComponent } from './chart/chart.component';
 import { LoginComponent } from './login/login.component';
 import { HttpInterceptorService } from './httpInterceptor.service';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { HttpInterceptorService } from './httpInterceptor.service';
     CaseDetailComponent,
     DashboardComponent,
     EditComponent, 
-    ChartComponent, LoginComponent
+    ChartComponent, LoginComponent, LogoutComponent
   ],
   imports: [
     BrowserModule,

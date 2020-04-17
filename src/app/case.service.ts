@@ -229,18 +229,22 @@ export class CaseService {
 
   /* 
    headers = new HttpHeaders()
-      .set("Content-Type", "application/json")
-      .set("Accept", "application/json");
+   .set("Content-Type", "application/json")
+   .set("Access-Control-Allow-Origin", "http://localhost:8080")
+   .set("Accept", "application/json")
+   .set("Access-Control-Allow-Methods","*")
+    .set("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept, Authorization")
+    .set("token_endpoint_auth_method", "none",)
     httpOptions = {
       headers: this.headers
-    };  */
+    };   */
   constructor(private http: HttpClient) { }
 
 
 
 
   caseService(username: String, password: String) {
-    return this.http.get(`http://localhost:8080/api/basicauth`,
+    return this.http.get(`${this.apiurl}` + 'basicauth',
       { headers: { authorization: this.createBasicAuthToken(username, password) } }).pipe(map((res) => {
         this.username = username;
         this.password = password;

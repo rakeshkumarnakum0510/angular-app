@@ -23,8 +23,10 @@ import { LogoutComponent } from './logout/logout.component';
     HomeComponent,
     CaseDetailComponent,
     DashboardComponent,
-    EditComponent, 
-    ChartComponent, LoginComponent, LogoutComponent
+    EditComponent,
+    ChartComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
